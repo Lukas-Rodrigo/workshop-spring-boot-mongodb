@@ -2,6 +2,7 @@ package com.lucasteixeira.workshopmongodb.config;
 
 import com.lucasteixeira.workshopmongodb.domain.Post;
 import com.lucasteixeira.workshopmongodb.domain.User;
+import com.lucasteixeira.workshopmongodb.dto.AuthorDTO;
 import com.lucasteixeira.workshopmongodb.repositories.PostRepository;
 import com.lucasteixeira.workshopmongodb.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,8 @@ public class Instantiation implements CommandLineRunner {
 
         userRepository.saveAll(Arrays.asList(maria, alex, bob));
 
-        Post pos1 = new Post(null, LocalDate.now(), "Partiu viagem", "Vou viajar para São paulo, abraços", maria);
-        Post pos2 = new Post(null, LocalDate.now(), "Bom dia", "Acordei feliz hoje", maria);
+        Post pos1 = new Post(null, LocalDate.now(), "Partiu viagem", "Vou viajar para São paulo, abraços", new AuthorDTO(maria));
+        Post pos2 = new Post(null, LocalDate.now(), "Bom dia", "Acordei feliz hoje", new AuthorDTO(maria));
 
         postRepository.saveAll(Arrays.asList(pos1, pos2));
 
