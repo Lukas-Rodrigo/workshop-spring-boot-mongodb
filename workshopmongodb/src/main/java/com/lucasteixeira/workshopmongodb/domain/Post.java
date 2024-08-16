@@ -2,9 +2,12 @@ package com.lucasteixeira.workshopmongodb.domain;
 
 import com.lucasteixeira.workshopmongodb.dto.AuthorDTO;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Document
@@ -16,6 +19,8 @@ public class Post {
     private String title;
     private String body;
     private AuthorDTO author;
+
+    private List<Comment> comments = new ArrayList<>();
 
     public Post() {
 
@@ -67,6 +72,14 @@ public class Post {
 
     public void setAuthor(AuthorDTO author) {
         this.author = author;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     @Override
